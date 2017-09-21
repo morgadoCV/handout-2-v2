@@ -60,6 +60,7 @@ bool j1Scene::Update(float dt)
 		App->Load();
 	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
 		App->Save();
+
 	App->render->Blit(img, 0, 0);
 	return true;
 }
