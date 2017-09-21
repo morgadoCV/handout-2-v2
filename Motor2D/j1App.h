@@ -43,14 +43,16 @@ public:
 	const char* GetArgv(int index) const;
 	const char* GetTitle() const;
 	const char* GetOrganization() const;
-
+	void Load();
+	void Save()	const;
 	// TODO 1: Create methods to save and load
 	// that can be called anytime, even if they 
 	// will one execute by the very end of the frame
 	// Load / Save
 
 private:
-
+	void realLoad();
+	void realSave() const;
 	// Load config file
 	bool LoadConfig();
 
@@ -71,6 +73,8 @@ private:
 
 public:
 
+	bool load = false;
+	mutable bool save = false;
 	// Modules
 	j1Window*			win;
 	j1Input*			input;

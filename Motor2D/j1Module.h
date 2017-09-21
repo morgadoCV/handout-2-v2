@@ -59,6 +59,15 @@ public:
 		return true;
 	}
 
+	virtual void Save(pugi::xml_node&) const
+	{
+
+	}
+	
+	virtual void Load(pugi::xml_node) const
+	{
+
+	}
 	// TODO 2: Create new virtual methods to Load and Save
 
 public:

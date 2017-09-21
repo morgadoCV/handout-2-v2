@@ -271,3 +271,22 @@ const char* j1App::GetOrganization() const
 
 // TODO 7: Create a method to save the current state
 
+void j1App::Load()
+{
+	load = true;
+}
+
+void j1App::Save() const
+{
+	save = true;
+}
+
+void j1App::realLoad()
+{
+	load = false;
+}
+
+void j1App::realSave() const
+{
+	save = false;
+}
