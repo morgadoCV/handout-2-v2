@@ -51,6 +51,7 @@ public:
 	// Load / Save
 
 private:
+	void Load_xml();
 	void realLoad();
 	void realSave() const;
 	// Load config file
@@ -85,6 +86,8 @@ public:
 
 private:
 
+	pugi::xml_document	save_file;
+	pugi::xml_node		save_node;
 	p2List<j1Module*>	modules;
 	uint				frames;
 	float				dt;

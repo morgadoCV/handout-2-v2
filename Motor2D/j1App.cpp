@@ -152,7 +152,14 @@ void j1App::PrepareUpdate()
 void j1App::FinishUpdate()
 {
 	// TODO 1: This is a good place to call load / Save functions
-
+	if (load)
+	{
+		realLoad();
+	}
+	if(save)
+	{
+		realSave();
+	}
 }
 
 // Call modules before each loop iteration
@@ -265,7 +272,19 @@ const char* j1App::GetOrganization() const
 
 
 // TODO 3: Create a simulation of the xml file to read 
+void j1App::Load_xml()
+{
+	bool ret = true;
+	pugi::xml_parse_result result = save_file.load_file("savegame_fake");
+	p2List_item<j1Module*>* item;
+	j1Module* module = NULL;
 
+
+	for (item = modules.start; item != NULL && ret == true; item = item->next)
+	{
+		item->data->Load(save_file.child("save"));
+	}
+}
 // TODO 4: Create a method to actually load an xml file
 // then call all the modules to load themselves
 
