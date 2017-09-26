@@ -275,7 +275,7 @@ const char* j1App::GetOrganization() const
 bool j1App::Load_xml()
 {
 	bool ret = true;
-	pugi::xml_parse_result result = save_file.load_file("savegame_fake");
+	pugi::xml_parse_result result = save_file.load_file("savegame_fake.xml");
 	save_node = save_file.child("save");
 	p2List_item<j1Module*>* item;
 	
@@ -291,7 +291,20 @@ bool j1App::Load_xml()
 // then call all the modules to load themselves
 
 // TODO 7: Create a method to save the current state
+bool j1App::Save_xml() 
+{
+	bool ret = true;
+	pugi::xml_parse_result result = save_file.load_file("savegame_fake.xml");
+	save_node = save_file.child("save");
+	p2List_item<j1Module*>* item;
 
+	for (item = modules.start; item != NULL && ret == true; item = item->next)
+	{
+		ret = item->data->Save(save_node.child(item->data->name.GetString()));
+	}
+	save_file.save_file("savegame_fake");
+	return true;
+}
 void j1App::Load()
 {
 	load = true;
@@ -304,12 +317,17 @@ void j1App::Save() const
 
 void j1App::realLoad()
 {
-	Load_xml();
-
+	bool ret = false;
+	LOG("Loading...");
+	ret = Load_xml();
+	if (ret)
+		LOG("It works.");
 	load = false;
 }
 
-void j1App::realSave() const
+void j1App::realSave() 
 {
+	bool ret = false;
+	ret = Save_xml();
 	save = false;
 }

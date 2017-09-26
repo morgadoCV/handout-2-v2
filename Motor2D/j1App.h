@@ -52,8 +52,9 @@ public:
 
 private:
 	bool Load_xml();
+	bool Save_xml();
 	void realLoad();
-	void realSave() const;
+	void realSave();
 	// Load config file
 	bool LoadConfig();
 
@@ -83,7 +84,8 @@ public:
 	j1Textures*			tex;
 	j1Audio*			audio;
 	j1Scene*			scene;
-
+	
+	
 private:
 
 	pugi::xml_document	save_file;

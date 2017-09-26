@@ -89,8 +89,17 @@ bool j1Render::CleanUp()
 
 bool j1Render::Load(pugi::xml_node& tilt) 
 {
-	camera.x = tilt.child("renderer").child("camera").attribute("x").as_int();
-	camera.y = tilt.child("renderer").child("camera").attribute("y").as_int();
+	camera.x = tilt.child("camera").attribute("x").as_int();
+	camera.y = tilt.child("camera").attribute("y").as_int();
+	return true;
+}
+
+bool j1Render::Save(pugi::xml_node& tilt) const
+{
+	pugi::xml_node cam = tilt.child("camera");
+	cam.attribute("x").set_value(camera.x);
+	cam.attribute("y").set_value(camera.y);
+	
 	return true;
 }
 // TODO 6: Create a method to load the state

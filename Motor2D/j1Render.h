@@ -24,7 +24,8 @@ public:
 	bool PreUpdate();
 	bool Update(float dt);
 	bool PostUpdate();
-	bool Load(pugi::xml_node& load);
+	bool Load(pugi::xml_node& tilt);
+	bool Save(pugi::xml_node& tilt) const;
 	// Called before quitting
 	bool CleanUp();
 
