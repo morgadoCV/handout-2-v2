@@ -51,7 +51,7 @@ public:
 	// Load / Save
 
 private:
-	void Load_xml();
+	bool Load_xml();
 	void realLoad();
 	void realSave() const;
 	// Load config file

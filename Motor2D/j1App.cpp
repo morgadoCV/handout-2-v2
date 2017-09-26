@@ -272,7 +272,7 @@ const char* j1App::GetOrganization() const
 
 
 // TODO 3: Create a simulation of the xml file to read 
-void j1App::Load_xml()
+bool j1App::Load_xml()
 {
 	bool ret = true;
 	pugi::xml_parse_result result = save_file.load_file("savegame_fake");
@@ -282,8 +282,9 @@ void j1App::Load_xml()
 
 	for (item = modules.start; item != NULL && ret == true; item = item->next)
 	{
-		item->data->Load(save_file.child("save"));
+		ret = item->data->Load(save_file.child(item->data->name.GetString()));
 	}
+	return true;
 }
 // TODO 4: Create a method to actually load an xml file
 // then call all the modules to load themselves

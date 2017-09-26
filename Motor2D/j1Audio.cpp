@@ -15,7 +15,7 @@ j1Audio::j1Audio() : j1Module()
 }
 
 // Destructor
-j1Audio::~j1Audio()
+j1Audio::~j1Audio() 
 {}
 
 // Called before render is available
