@@ -87,6 +87,12 @@ bool j1Render::CleanUp()
 	return true;
 }
 
+bool j1Render::Load(pugi::xml_node& tilt) 
+{
+	camera.x = tilt.child("renderer").child("camera").attribute("x").as_int();
+	camera.y = tilt.child("renderer").child("camera").attribute("y").as_int();
+	return true;
+}
 // TODO 6: Create a method to load the state
 // for now it will be camera's x and y
 

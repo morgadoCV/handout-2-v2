@@ -24,7 +24,7 @@ public:
 	bool PreUpdate();
 	bool Update(float dt);
 	bool PostUpdate();
-
+	bool Load(pugi::xml_node& load);
 	// Called before quitting
 	bool CleanUp();
 

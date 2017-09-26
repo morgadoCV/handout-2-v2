@@ -276,13 +276,14 @@ bool j1App::Load_xml()
 {
 	bool ret = true;
 	pugi::xml_parse_result result = save_file.load_file("savegame_fake");
+	save_node = save_file.child("save");
 	p2List_item<j1Module*>* item;
-	j1Module* module = NULL;
+	
 
 
 	for (item = modules.start; item != NULL && ret == true; item = item->next)
 	{
-		ret = item->data->Load(save_file.child(item->data->name.GetString()));
+		ret = item->data->Load(save_node.child(item->data->name.GetString()));
 	}
 	return true;
 }
@@ -303,6 +304,8 @@ void j1App::Save() const
 
 void j1App::realLoad()
 {
+	Load_xml();
+
 	load = false;
 }
 
